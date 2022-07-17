@@ -23,9 +23,7 @@ public class MenuEngine : MonoBehaviour
     // When start button is pressed, switch the scene to the game
     public void StartButton()
     {
-        //function to load the game
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
-        
+        SceneManager.LoadScene(1, LoadSceneMode.Single);   
     }
 
     // When quit button is pressed, Quit the game

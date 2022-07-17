@@ -16,7 +16,7 @@ public class AutosaveScore : MonoBehaviour
 
     }
 
-    //function to save player Name into a json file
+    //function to save player name and score into a json file
     public void SavePlayerScore(int score)
     {
         SaveData data = new SaveData();
@@ -27,7 +27,7 @@ public class AutosaveScore : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
 
-
+    // function to load the player score and name into static variable
     public void LoadPlayerScore()
     {
         string path = Application.persistentDataPath + "/savefile.json";
@@ -39,6 +39,7 @@ public class AutosaveScore : MonoBehaviour
             bestPlayerName = data.playerNameToSave;
             bestScore = data.playerScoreToSave;
         }
+        // if not file created, start with nothing saved, but still a value.
         else
         {
             bestPlayerName = "";

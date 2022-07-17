@@ -54,7 +54,7 @@ public class MainManager : MonoBehaviour
                 Ball.AddForce(forceDir * 2.0f, ForceMode.VelocityChange);
             }
         }
-        // When Game over, if space key is pressed, switch from the game to the menu but with totalscore saved into a static variable
+        // When Game over, if space key is pressed, switch from the game to the menu but with score saved into a static variable
         else if (m_GameOver)
         {
             if (Input.GetKeyDown(KeyCode.Space))
