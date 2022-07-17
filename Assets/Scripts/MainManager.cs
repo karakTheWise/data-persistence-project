@@ -17,7 +17,7 @@ public class MainManager : MonoBehaviour
     private int m_Points;
 
     static public bool m_GameOver = false;
-    static public int totalscore = 0;
+    static public int totalScore = 0;
 
 
     // Start is called before the first frame update
@@ -59,7 +59,7 @@ public class MainManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                totalscore = m_Points;
+                totalScore = m_Points;
                 SceneManager.LoadScene(0, LoadSceneMode.Single);
             }
         }
@@ -68,7 +68,7 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = $"Score : {m_Points}";
+        ScoreText.text = "Joueur: "+ MenuEngine.playerName + $"    Score : {m_Points}";
     }
 
     //Display the Game over text
