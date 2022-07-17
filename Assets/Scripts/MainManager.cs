@@ -12,20 +12,21 @@ public class MainManager : MonoBehaviour
 
     public Text ScoreText;
     public GameObject GameOverText;
-    
+
     private bool m_Started = false;
     private int m_Points;
-    
-    private bool m_GameOver = false;
 
-    
+    static public bool m_GameOver = false;
+    static public int totalscore = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
-        
-        int[] pointCountArray = new [] {1,1,2,2,5,5};
+
+        int[] pointCountArray = new[] { 1, 1, 2, 2, 5, 5 };
         for (int i = 0; i < LineCount; ++i)
         {
             for (int x = 0; x < perLine; ++x)
@@ -53,11 +54,13 @@ public class MainManager : MonoBehaviour
                 Ball.AddForce(forceDir * 2.0f, ForceMode.VelocityChange);
             }
         }
+        // When Game over, if space key is pressed, switch from the game to the menu but with totalscore saved into a static variable
         else if (m_GameOver)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                totalscore = m_Points;
+                SceneManager.LoadScene(0, LoadSceneMode.Single);
             }
         }
     }
@@ -68,9 +71,11 @@ public class MainManager : MonoBehaviour
         ScoreText.text = $"Score : {m_Points}";
     }
 
+    //Display the Game over text
     public void GameOver()
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+
     }
 }
